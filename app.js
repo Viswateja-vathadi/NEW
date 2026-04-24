@@ -1,10 +1,18 @@
-const express = require('express');
-const app = express();
+function sum(a, b) {
+  return a + b;
+}
 
-app.get('/', (req, res) => {
-  res.send('Hello from Node.js App 🚀');
-});
+module.exports = sum;
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
+// simple server (optional)
+if (require.main === module) {
+  const http = require('http');
+
+  const server = http.createServer((req, res) => {
+    res.end('Hello from Node.js App 🚀');
+  });
+
+  server.listen(3000, () => {
+    console.log('Server running on port 3000');
+  });
+}
